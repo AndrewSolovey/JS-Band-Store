@@ -1,0 +1,92 @@
+nav img {
+    width: 40px;
+    height: 40px;
+}
+nav img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.sign-out, .add_to_cart {
+    border: 2px solid;
+    border-radius: 20px;
+    padding: 12px;
+    background-color: yellow;
+    color: black;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 1.6rem;
+}
+
+.sign-out {
+    margin: 0 50px;
+}
+
+.sign-out:hover {
+    background-color: black;
+    color: yellow;
+    transition: 0.7s;
+}
+
+.add_to_cart {
+    background-color: black;
+    color: yellow;
+    margin: 0;
+    align-self: flex-end;
+}
+
+.add_to_cart:hover {
+    background-color: yellow;
+    color: black;
+    transition: 0.7s;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.user:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+span {
+    font-size: 1.6rem;
+    margin-left: 5px;
+}
+
+.img_book {
+    grid-area: img;
+    background-image: url('../books/javascript_everywhere.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 270px;
+    height: 350px;
+}
+
+.count_button {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 1024px) {
+    .sign-out {
+        margin: 0 15px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+    .img_book {
+        display: flex;
+        width: 202.5px;
+        height: 262.5px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .user{
+        margin-top: 15px;
+    }
+}

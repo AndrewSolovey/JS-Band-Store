@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Band Store</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    
+    <header>
+      <nav>
+        <a class="header_name" href="#">JS BAND STORE / <em class="header_name_surname">Andrii Solovei</em></a>
+        <div class="nav_container">
+          <a href="#"><img src="../images/cart.png" alt="Selected products" /></a>
+          <button class="sign-out">Sign-Out</button>
+          <a class="user" href="#"><img src="../images/avatar.png" alt="Your avatar" /><span>User</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="main-wrapper">
+        <div class="block_content_padding">
+
+          <div class="content_of_the_book" data-id="1">
+            <img class="img_book" id="bookImage" alt="Book Image" />
+
+            <div class="main_info_book">
+              <div class="main_desc">
+                <p class="book_name" id="bookTitle"></p>
+                <p class="book_author" id="bookAuthor"></p>
+                <p class="book_level" id="bookLevel"></p>
+                <div class="book_tags" id="bookTags"></div>
+                <div class="short_descript" id="bookShortDescription"></div>
+              </div>
+            </div>
+
+            <div class="price_count_book">
+              <div class="order">
+                <div class="order_wrap">
+                  <p class="price_text">Price, $</p>
+                  <p class="price_value" id="bookPrice"></p>
+                </div>
+                <div class="order_wrap">
+                  <p class="price_text">Count</p>
+                  <div class="count_button">
+                    <button class="btn_reduce" id="reduceButton">-</button>
+                    <input class="count_input" type="number" name="count" id="countInput" min="1" max="42" value="1">
+                    <button class="btn_increase" id="increaseButton">+</button>
+                  </div>
+                </div>
+                <div class="order_wrap">
+                  <p class="price_text">Total price:</p>
+                  <p class="price_value" id="bookTotalPrice"></p>
+                </div>
+                <button class="add_to_cart" type="submit">Add to cart</button>
+              </div>
+            </div> 
+            
+            <div class="description_block">
+              <div class="description_text">
+                <p id="bookDescription"></p>
+              </div>
+            </div>
+          </div>  
+
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      Виконано в <a href="https://prometheus.org.ua/" target="_blank" rel="noopener noreferrer"> Prometheus </a>
+      <img src="../images/Copyright_sign.png" alt="Copy sign" /> 2024
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
+

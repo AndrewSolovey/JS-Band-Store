@@ -1,0 +1,48 @@
+footer {
+    display: flex;
+    height: 80px;
+    background-color: black;
+    color: yellow;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+footer a {
+    padding: 0 7px;
+}
+
+footer a:hover {
+    color: #fde910;
+}
+
+footer img {
+    margin-right: 10px;
+    width: 16px;
+}
+
+@media screen and (max-width: 800px) {
+    footer {
+        height: 70px;
+    }
+    footer a {
+        padding: 0 5px;
+    }
+    footer img {
+        margin-right: 8px;
+        width: 16px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    footer {
+        height: 60px;
+    }
+    footer a {
+        padding: 0 4px;
+    }
+    footer img {
+        margin-right: 6px;
+        width: 14px;
+    }
+}

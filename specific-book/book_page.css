@@ -1,0 +1,213 @@
+/* дозволяємо мєйну розтягуватися */
+main{
+    flex: 1 1 300px;
+}
+
+.main-wrapper {
+    display: flex;
+    background-color: yellow;
+    flex-direction: column;
+    align-items: center;
+    /* розтягуємо блок на всю висоту */
+    height: 100%;
+}
+
+.block_content_padding {
+    padding: 5rem 0;
+    max-width: 1200px;
+}
+
+.content_of_the_book {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr;
+    grid-template-areas: "img short_desc price_and_count"
+                         "desc_book desc_book desc_book";
+    gap: 15px;
+}
+
+.main_info_book {
+    grid-area: short_desc;
+}
+
+.main_desc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.book_name {
+    font-size: 2.5rem;  
+    font-weight: 600;
+}
+
+.book_author {
+    font-size: 2.3rem;
+}
+
+.book_level {
+    font-size: 2.1rem;
+}
+
+.book_tags a {
+    color: black;
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding-right: 10px;
+}
+
+.book_tags a:hover {
+    transform: scale(1.2);
+    font-weight: bolder;
+    transition: 1s;
+}
+
+.price_count_book {
+    grid-area: price_and_count;
+}
+
+.price_count_book .order {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px 20px;
+    background-color: #fde910;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.order_wrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+}
+
+.price_text, .price_value, .count_input {
+    font-weight: 600;
+}
+
+.btn_reduce, .btn_increase, .count_input {
+    background-color: #ffff00;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: 2px solid black;
+    font-size: 2rem;
+}
+
+.count_input {
+    height: 100%;
+    width: 50%;
+    font-size: 1.6rem;
+}
+
+.description_block {
+    grid-area: desc_book;
+}
+
+.description_text {
+    font-size: 1.8rem;
+    padding-top: 30px;
+}
+
+.short_descript {
+    font-size: 1.5rem;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1220px) {
+    .content_of_the_book {
+        width: 1000px;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px) {
+    nav {
+        margin: 0 25px;
+    }
+    .content_of_the_book {
+        width: 770px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .price_count_book {
+        width: 270px;
+        position: absolute;
+        top: 0%; 
+        right: 10%;
+    }
+    .price_count_book .order {
+        padding: 20px 15px;
+    }
+    .count_input {
+        width: 30%;
+    }
+    .description_text {
+        padding-top: 0;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+    .content_of_the_book {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        position: relative;
+        padding: 0 20px;
+        max-width: 668px;
+    }
+    .main_info_book {
+        max-width: 200px;
+    }
+    .price_count_book {
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+    .price_count_book .order {
+        padding: 20px 15px;
+        width: 200px;
+    }
+    .count_input {
+        width: 35%;
+    }
+    .btn_reduce, .btn_increase, .count_input {
+        padding: 4px 8px;
+    }
+    .description_block {    
+        width: 200px;
+    }
+    .description_text {
+        padding-top: 0;
+    }
+    p {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content_of_the_book {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }  
+    .main_info_book {
+        display: flex;
+        width: 270px;
+    }
+    .price_count_book {
+        width: 270px;
+    }
+    .count_input {
+        width: 25%;
+    }
+    .description_block {    
+        margin: 0 20px;
+        width: 270px;
+    }
+    .description_text {
+        padding-top: 0;
+    }
+}

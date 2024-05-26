@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Band Store</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <nav>
+          <a class="header_name" href="#">JS BAND STORE / <em class="header_name_surname">Andrii Solovei</em></a>
+          <div class="nav_container">
+            <a href="#"><img src="../images/cart.png" alt="Selected products" /></a>
+            <button class="sign-out">Sign-Out</button>
+            <a class="user" href="#"><img src="../images/avatar.png" alt="Your avatar" /><span>User</span></a>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section_content_padding">
+          <div class="container_books">
+            <div class="books_search">
+              <div class="search">
+                <div class="search_input">
+                  <input type="search" name="search" id="search" placeholder="Search by book name">
+                </div>
+                <div class="search_filter_price">
+                  <label for="searchFilterPrice">Choose price:</label>
+                  <select name="filter_price" id="searchFilterPrice" placeholder="Price">
+                    <option value="all">All books</option>
+                    <option value="15">Up to 15$</option>
+                    <option value="15-30">From 15$ - To 30$</option>
+                    <option value="30">Over 30$</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="books_list">
+              <ul class="list" id="list">
+                <!-- Вміст списку книг буде динамічно створено за допомогою JavaScript -->
+              </ul>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <footer>
+      Виконано в <a href="https://prometheus.org.ua/" target="_blank" rel="noopener noreferrer"> Prometheus </a>
+      <img src="../images/Copyright_sign.png" alt="Copy sign" /> 2024
+    </footer>
+  
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+

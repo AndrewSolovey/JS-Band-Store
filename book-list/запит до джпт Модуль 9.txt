@@ -1,0 +1,285 @@
+Чудово. Це у моєму проекті сторінка однієї конкретної книги. А у мене є окремо сторінка списку каталогу таких книг. 
+Ось мій код HTML. Чи вірно він написаний? Я вважаю, що його точно треба скоротити і прибрати блоки <li class="item"> взагалі або залишити лише один. 
+
+Також, будь ласка, послідовно напиши і поясни мені JS код, який буде вирішувати наступні задачі: 
+
+1. при натисканні на окрему книгу в списку як звідси <a class="item_img_block" href="#">, так і звідси 
+<a class="item_link" href="#">View</a> переходило на сторінку цієї книги      (+-)
+2. при введенні назви книги звідси <p class="item_name"> у поле <input type="search" name="search" id="search" placeholder="Search by book name">
+відображалися коректні запити і в каталозі виводило лише ці книги    +++
+3. Коректно працювали поля <div class="search_filter_price"> і книги правильно фільтрувало згідно з ціновим діапазоном    +++
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Band Store</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <nav>
+          <a class="header_name" href="#">JS BAND STORE / <em class="header_name_surname">Andrii Solovei</em></a>
+          <div class="nav_container">
+            <a href="#"
+              ><img src="../images/cart.png" alt="Selected products"
+            /></a>
+            <button class="sign-out">Sign-Out</button>
+            <a class="user" href="#"
+              ><img src="../images/avatar.png" alt="Your avatar" /><span
+                >User</span
+              ></a
+            >
+          </div>
+        </nav>
+      </header>
+
+      <main>
+          <section class="section_content_padding">
+            <div class="container_books">
+              <div class="books_search">
+                <div class="search">
+                  <div class="search_input">
+                    <input type="search" name="search" id="search" placeholder="Search by book name">
+                  </div>
+                  <div class="search_filter_price">
+                    <label for="searchFilterPrice">Choose price:</label>
+                    <select name="filter_price" id="searchFilterPrice" placeholder="Price">
+                      <option value="all">All books</option>
+                      <option value="15$">Up to 15$</option>
+                      <option value="30$">From 15$ - To 30$</option>
+                      <option value="30+$">Over 30$</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="books_list">
+                <ul class="list" id="list">
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/javascript_the_definitive_guide.jpg)"></div>
+                    </a>
+                    <p class="item_name">JavaScript: The Definitive Guide, 7th Edition</p>
+                    <p class="item_author">David Flanagan</p>
+                    <span class="item_price">10.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/javascript_everywhere.jpg)"></div>
+                    </a>
+                    <p class="item_name">JavaScript Everywhere</p>
+                    <p class="item_author">Adam D. Scott</p>
+                    <span class="item_price">8.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/learning_react_2nd_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">Learning React, 2nd Edition</p>
+                    <p class="item_author">Alex Banks, Eve Porcello</p>
+                    <span class="item_price">18.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../images/imageNotFound.png)"></div>
+                    </a>
+                    <p class="item_name">Clean Code in JavaScript</p>
+                    <p class="item_author">James Padolsey</p>
+                    <span class="item_price">31.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/react_up_and_running_2nd_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">React: Up & Running, 2nd Edition</p>
+                    <p class="item_author">Stoyan Stefanov</p>
+                    <span class="item_price">14.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/css_the_definitive_guide_5th_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">CSS: The Definitive Guide, 5th Edition</p>
+                    <p class="item_author">Eric Meyer, Estelle Weyl</p>
+                    <span class="item_price">15.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/learning_test_driven_development.jpg)"></div>
+                    </a>
+                    <p class="item_name">Learning Test-Driven Development</p>
+                    <p class="item_author">Saleem Siddiqui</p>
+                    <span class="item_price">36.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/angular_up_and_running.jpg)"></div>
+                    </a>
+                    <p class="item_name">Angular: Up and Running</p>
+                    <p class="item_author">Shyam Seshadri</p>
+                    <span class="item_price">29.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/restful_web_apis.jpg)"></div>
+                    </a>
+                    <p class="item_name">RESTful Web APIs</p>
+                    <p class="item_author">Mike Amundsen, Sam Ruby, Leonard Richardson</p>
+                    <span class="item_price">12.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/universal_design_for_web_applications.jpg)"></div>
+                    </a>
+                    <p class="item_name">Universal Design for Web Applications</p>
+                    <p class="item_author">Wendy Chisholm, Matt May</p>
+                    <span class="item_price">6.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../images/imageNotFound.png)"></div>
+                    </a>
+                    <p class="item_name">Web Workers: Multithreaded Programs in JavaScript</p>
+                    <p class="item_author">Ido Green</p>
+                    <span class="item_price"> 14.99</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/websocket.jpg)"></div>
+                    </a>
+                    <p class="item_name">WebSocket</p>
+                    <p class="item_author">Andrew Lombardi</p>
+                    <span class="item_price">10.89</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/securing_ajax_applications.jpg)"></div>
+                    </a>
+                    <p class="item_name">Securing Ajax Applications</p>
+                    <p class="item_author">Christopher Wells</p>
+                    <span class="item_price">14.49</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/version_control_with_git_3rd_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">Version Control with Git, 3rd Edition</p>
+                    <p class="item_author">Prem Kumar Ponuthorai, Jon Loeliger</p>
+                    <span class="item_price">26.49</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/mongodb_the_definitive_guide_3rd_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">MongoDB: The Definitive Guide, 3rd Edition</p>
+                    <p class="item_author">Shannon Bradshaw, Eoin Brazil, Kristina Chodorow</p>
+                    <span class="item_price">29.49</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/learning_git.jpg)"></div>
+                    </a>
+                    <p class="item_name">Learning Git</p>
+                    <p class="item_author">Anna Skoulikari</p>
+                    <span class="item_price">6.39</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/using_svg_with_css3_and_html5.jpg)"></div>
+                    </a>
+                    <p class="item_name">Using SVG with CSS3 and HTML5</p>
+                    <p class="item_author">Amelia Bellamy-Royds, Kurt Cagle, Dudley Storey</p>
+                    <span class="item_price">21.49</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/svg_animations.jpg)"></div>
+                    </a>
+                    <p class="item_name">SVG Animations</p>
+                    <p class="item_author">Sarah Drasner</p>
+                    <span class="item_price">28.39</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/git_for_teams.jpg)"></div>
+                    </a>
+                    <p class="item_name">Git for Teams</p>
+                    <p class="item_author">Emma Jane Hogbin Westby</p>
+                    <span class="item_price"> 7.39</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/learning_node_2nd_edition.jpg)"></div>
+                    </a>
+                    <p class="item_name">Learning Node, 2nd Edition</p>
+                    <p class="item_author">Shelley Powers</p>
+                    <span class="item_price">38.49</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                  <li class="item">
+                    <a class="item_img_block" href="#">
+                      <div class="item_img" style="background-image:url(../books/node_for_front_end_developers.jpg)"></div>
+                    </a>
+                    <p class="item_name">Node for Front-End Developers</p>
+                    <p class="item_author">Garann Means</p>
+                    <span class="item_price">41.89</span>
+                    <a class="item_link" href="#">View</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </section>
+      </main>
+
+      <footer>
+        Виконано в <a href="https://prometheus.org.ua/" target="_blank" rel="noopener noreferrer"> Prometheus </a>
+        <img src="../images/Copyright_sign.png" alt="Copy sign" /> 2024
+      </footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>
