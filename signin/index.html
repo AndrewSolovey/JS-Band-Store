@@ -24,10 +24,11 @@ rel="stylesheet">
                 <div class="img_author">
                     <img src="../images/avatar.png" alt="Your avatar">
                 </div>
-                <form action="/" target="_blank" method="post" autocomplete="on">
+                <form id="authForm" action="../book-list/index.html" target="_blank" method="post" autocomplete="on">
                     <div class="form_username">
                         <label class="label_form" for="username">Username</label>
                         <input class="input_form" type="text" id="username" placeholder="type Username" autofocus>
+                        <p id="usernameHint" class="hint"></p>
                     </div>
                     <button type="submit">SIGN-IN</button>
                 </form>
@@ -39,5 +40,7 @@ rel="stylesheet">
         Виконано в <a href="https://prometheus.org.ua/" target="_blank" rel="noopener noreferrer"> Prometheus </a>
         <img src="../images/Copyright_sign.png" alt="Copy sign" /> 2024
       </footer>
+
+      <script src="index.js"></script>
     </body>
   </html>

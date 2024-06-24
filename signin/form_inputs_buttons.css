@@ -13,7 +13,7 @@ form {
 .form_username {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
 }
 
 .label_form {
@@ -43,6 +43,17 @@ input {
     font-size: 2rem;
 }
 
+.input_form {
+    align-self: center;
+    font-size: 1.4rem; /* Відносний розмір шрифту */
+}
+
+.username_hint {
+    color: red;
+    text-align: center;
+    font-size: 1.4rem; /* Відносний розмір шрифту */
+  }
+
 button {
     font-weight: bolder;
     font-size: 1.7rem;
@@ -64,7 +75,7 @@ button:hover {
         gap: 10px;
     }
     .form_username {
-        gap: 10px;
+        gap: 5px;
     }
     .input_form, button {
         padding: 6px 12px;
