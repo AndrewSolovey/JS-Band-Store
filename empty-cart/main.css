@@ -1,0 +1,30 @@
+html {
+	font-size: 10px;
+	font-family: Roboto, sans-serif;
+	font-weight: 400;
+
+	@media screen and (max-width: 1024px) {
+		font-size: 9px;
+	}
+
+	@media screen and (max-width: 800px) {
+		font-size: 8px;
+	}
+
+	@media screen and (max-width: 420px) {
+		font-size: 7px;
+	}
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+	text-decoration: none;
+    color: yellow;
+    font-weight: 600;
+	cursor: pointer;
+}

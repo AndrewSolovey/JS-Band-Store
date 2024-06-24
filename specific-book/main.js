@@ -334,164 +334,93 @@ const books =
 		}
 	]
 	
-	// function updateTotalPrice(price, quantity = 1) {
-	// 	const totalPriceElement = document.getElementById('bookTotalPrice');
-	// 	totalPriceElement.textContent = (price * quantity).toFixed(2);
-	// }
-	
-	// function updateCountInput(increment, price) {
-	// 	const countInput = document.getElementById('countInput');
-	// 	const newValue = validateBooksCountRange(+countInput.value + increment);
-	// 	countInput.value = newValue;
-	// 	updateTotalPrice(price, newValue);
-	// }
-	
-	// document.addEventListener('DOMContentLoaded', function() {
-	// 	console.log('DOM fully loaded and parsed');
-		
-	// 	// Отримання ID з фрагмента URL та параметрів пошуку
-	// 	let bookId = new URLSearchParams(window.location.search).get('id');
-	// 	if (!bookId) {
-	// 		bookId = window.location.hash.substring(1);
-	// 	}
-	
-	// 	console.log('Book ID from URL:', bookId);
-		
-	// 	// Перевірка наявності bookId
-	// 	if (!bookId || isNaN(parseInt(bookId))) {
-	// 		alert('Book not found');
-	// 		console.error('Book ID not found in URL');
-	// 		return;
-	// 	}
-		
-	// 	// Перетворення bookId в число і пошук книги
-	// 	const book = books.find(value => value.id === parseInt(bookId));
-		
-	// 	if (!book) {
-	// 		alert('Book not found');
-	// 		console.error('Book with the specified ID not found in the list of books');
-	// 		return;
-	// 	}
-		
-	// 	// Додавання обробників подій
-	// 	document.getElementById('reduceButton').addEventListener('click', () => updateCountInput(-1, book.price));
-	// 	document.getElementById('increaseButton').addEventListener('click', () => updateCountInput(1, book.price));
-	// 	document.getElementById('countInput').addEventListener('change', () => updateCountInput(0, book.price));
-		
-	// 	// Оновлення елементів сторінки з інформацією про книгу
-	// 	document.getElementById('bookPrice').textContent = book.price;
-	// 	document.getElementById('bookAuthor').textContent = book.author;
-	// 	document.getElementById('bookShortDescription').textContent = book.shortDescription;
-	// 	document.getElementById('bookLevel').textContent = book.level;
-	// 	document.getElementById('bookTitle').textContent = book.title;
-	// 	document.getElementById('bookDescription').textContent = book.description;
-		
-	// 	const bookImageElement = document.getElementById('bookImage');
-	// 	if (bookImageElement) {
-	// 		bookImageElement.setAttribute('src', book.image);
-	// 	}
-		
-	// 	const bookTagsElement = document.getElementById('bookTags');
-	// 	for (const tag of book.tags) {
-	// 		const linkTag = document.createElement("a");
-	// 		linkTag.textContent = '#' + tag;
-	// 		bookTagsElement.append(linkTag);
-	// 	}
-		
-	// 	// Оновлення загальної ціни
-	// 	updateTotalPrice(book.price);
-	// });
-	
-	// function validateBooksCountRange(value) {
-	// 	let validValue = Math.max(1, Math.min(42, value));
-	// 	return parseFloat(validValue.toFixed(2));
-	// }
-	
-	function updateTotalPrice(price, quantity = 1) {
-		const totalPriceElement = document.getElementById('bookTotalPrice');
-		totalPriceElement.textContent = (price * quantity).toFixed(2);
-	}
-	
-	function updateCountInput(increment, price) {
-		const countInput = document.getElementById('countInput');
-		const newValue = validateBooksCountRange(+countInput.value + increment);
-		countInput.value = newValue;
-		updateTotalPrice(price, newValue);
-	}
-	
-	function getRandomBookId() {
-		const randomIndex = Math.floor(Math.random() * books.length);
-		return books[randomIndex].id;
-	}
-	
-	document.addEventListener('DOMContentLoaded', function() {
-		console.log('DOM fully loaded and parsed');
-	
-		// Отримання ID з фрагмента URL та параметрів пошуку
-		let bookId = new URLSearchParams(window.location.search).get('id');
-		if (!bookId) {
-			bookId = window.location.hash.substring(1);
-		}
-	
-		if (!bookId) {
-			// Якщо bookId відсутній, обираємо випадковий
-			bookId = getRandomBookId();
-			const newUrl = `${window.location.pathname}?id=${bookId}`;
-			window.history.replaceState({}, '', newUrl);
-		}
-	
-		console.log('Book ID from URL:', bookId);
-	
-		// Перевірка наявності bookId
-		if (!bookId || isNaN(parseInt(bookId))) {
-			alert('Book not found');
-			console.error('Book ID not found in URL');
-			return;
-		}
-	
-		// Перетворення bookId в число і пошук книги
-		const book = books.find(value => value.id === parseInt(bookId));
-	
-		if (!book) {
-			alert('Book not found');
-			console.error('Book with the specified ID not found in the list of books');
-			return;
-		}
-	
-		// Додавання обробників подій
-		document.getElementById('reduceButton').addEventListener('click', () => updateCountInput(-1, book.price));
-		document.getElementById('increaseButton').addEventListener('click', () => updateCountInput(1, book.price));
-		document.getElementById('countInput').addEventListener('change', () => updateCountInput(0, book.price));
-	
-		// Оновлення елементів сторінки з інформацією про книгу
-		document.getElementById('bookPrice').textContent = book.price;
-		document.getElementById('bookAuthor').textContent = book.author;
-		document.getElementById('bookShortDescription').textContent = book.shortDescription;
-		document.getElementById('bookLevel').textContent = book.level;
-		document.getElementById('bookTitle').textContent = book.title;
-		document.getElementById('bookDescription').textContent = book.description;
-	
-		const bookImageElement = document.getElementById('bookImage');
-		if (bookImageElement) {
-			bookImageElement.setAttribute('src', book.image);
-		}
-	
-		const bookTagsElement = document.getElementById('bookTags');
-		for (const tag of book.tags) {
-			const linkTag = document.createElement("a");
-			linkTag.textContent = '#' + tag;
-			bookTagsElement.append(linkTag);
-		}
-	
-		// Оновлення загальної ціни
-		updateTotalPrice(book.price);
-	});
-	
-	function validateBooksCountRange(value) {
-		let validValue = Math.max(1, Math.min(42, value));
-		return parseFloat(validValue.toFixed(2));
-	}
-	
-	
-	
-	
+	// Функція для оновлення загальної ціни
+function updateTotalPrice(price, quantity = 1) {
+    const totalPriceElement = document.getElementById('bookTotalPrice'); // Отримання елемента загальної ціни
+    totalPriceElement.textContent = (price * quantity).toFixed(2); // Обчислення і встановлення загальної ціни
+}
+
+// Функція для оновлення значення поля введення кількості та загальної ціни
+function updateCountInput(increment, price) {
+    const countInput = document.getElementById('countInput'); // Отримання елемента поля введення кількості
+    const newValue = validateBooksCountRange(+countInput.value + increment); // Перевірка нового значення кількості
+    countInput.value = newValue; // Встановлення нового значення кількості
+    updateTotalPrice(price, newValue); // Оновлення загальної ціни
+}
+
+// Функція для отримання випадкового ID книги з масиву книг
+function getRandomBookId() {
+    const randomIndex = Math.floor(Math.random() * books.length); // Отримання випадкового індексу
+    return books[randomIndex].id; // Повернення ID книги за випадковим індексом
+}
+
+// Обробник події для завантаження контенту DOM
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM повністю завантажений і розібраний'); // Повідомлення про завантаження DOM
+
+    // Отримання ID книги з фрагмента URL або параметрів пошуку
+    let bookId = new URLSearchParams(window.location.search).get('id');
+    if (!bookId) {
+        bookId = window.location.hash.substring(1); // Запасний варіант отримання ID з хешу URL
+    }
+
+    if (!bookId) {
+        // Якщо bookId відсутній, обираємо випадкову книгу та оновлюємо URL
+        bookId = getRandomBookId();
+        const newUrl = `${window.location.pathname}?id=${bookId}`;
+        window.history.replaceState({}, '', newUrl);
+    }
+
+    console.log('ID книги з URL:', bookId); // Виведення ID книги з URL
+
+    // Перевірка на валідність bookId
+    if (!bookId || isNaN(parseInt(bookId))) {
+        alert('Книгу не знайдено'); // Повідомлення про відсутність валідного ID книги
+        console.error('ID книги не знайдено в URL'); // Виведення помилки
+        return;
+    }
+
+    // Перетворення bookId в число і пошук відповідної книги
+    const book = books.find(value => value.id === parseInt(bookId));
+
+    if (!book) {
+        alert('Книгу не знайдено'); // Повідомлення про відсутність відповідної книги
+        console.error('Книга з вказаним ID не знайдена у списку книг'); // Виведення помилки
+        return;
+    }
+
+    // Додавання обробників подій для кнопок зменшення та збільшення
+    document.getElementById('reduceButton').addEventListener('click', () => updateCountInput(-1, book.price));
+    document.getElementById('increaseButton').addEventListener('click', () => updateCountInput(1, book.price));
+    document.getElementById('countInput').addEventListener('input', () => updateCountInput(0, book.price)); // Зміна на 'input' подію
+
+    // Оновлення елементів сторінки з інформацією про книгу
+    document.getElementById('bookPrice').textContent = book.price;
+    document.getElementById('bookAuthor').textContent = book.author;
+    document.getElementById('bookShortDescription').textContent = book.shortDescription;
+    document.getElementById('bookLevel').textContent = book.level;
+    document.getElementById('bookTitle').textContent = book.title;
+    document.getElementById('bookDescription').textContent = book.description;
+
+    const bookImageElement = document.getElementById('bookImage'); // Отримання елемента зображення книги
+	const defaultImage = "../images/imageNotFound.png"; // Шлях до зображення not found
+    if (bookImageElement) {
+        bookImageElement.setAttribute('src', book.image || defaultImage); // Встановлення джерела зображення
+    }
+
+    const bookTagsElement = document.getElementById('bookTags'); // Отримання елемента тегів книги
+    for (const tag of book.tags) {
+        const linkTag = document.createElement("a"); // Створення нового елемента посилання для кожного тегу
+        linkTag.textContent = '#' + tag; // Встановлення тексту тегу
+        bookTagsElement.append(linkTag); // Додавання тегу до елемента тегів книги
+    }
+
+    // Оновлення загальної ціни
+    updateTotalPrice(book.price);
+});
+
+// Функція для перевірки діапазону значення кількості книг
+function validateBooksCountRange(value) {
+    let validValue = Math.max(1, Math.min(42, value)); // Забезпечення значення в межах від 1 до 42
+    return parseFloat(validValue.toFixed(2)); // Повернення валідного значення
+}

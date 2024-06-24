@@ -1,0 +1,14 @@
+cd JS-Band_Store (Course Ciklum / IT Technical)
+
+npm install gh-pages --save-dev 
+
+Перевірка: 
+In package.json can be in 
+devDependencies: "gh-pages": "version"
+
+Після поля name пишемо: 
+"homepage": https://Solovei/github.io/(назва твого проекту. Поки що - JS-Band_Store. Має бути - prometheus-x-course-task )
+
+В секції "scripts":
+"predeploy": npm run build,
+"deploy": gh-pages -d build 

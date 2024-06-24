@@ -1,0 +1,33 @@
+main {
+    flex: 1 1 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+}
+
+.container {
+    max-width: 1200px;
+    padding-inline: 20px;
+    margin: 0 auto;
+}
+
+.cart_container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 12rem 0;
+    align-items: center;
+}
+
+.cart_text {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 20px;
+}

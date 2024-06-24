@@ -41,7 +41,7 @@ nav img:hover {
     transition: 0.7s;
 }
 
-.user{
+.user {
     display: flex;
     align-items: center;
 }
@@ -100,7 +100,7 @@ span {
 }
 
 @media screen and (max-width: 600px) {
-    .user{
+    .user {
         margin-top: 15px;
     }
 }
