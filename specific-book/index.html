@@ -11,14 +11,23 @@
     
     <header>
       <nav>
-        <a class="header_name" href="#">X-course task / <em class="header_name_surname">Andrii Solovei</em></a>
+        <a class="header_name" href="../book-list/index.html">X-course task / <em class="header_name_surname">Andrii Solovei</em></a>
         <div class="nav_container">
-          <a href="#"><img src="../images/cart.png" alt="Selected products" /></a>
+          
+          <div class="cart-container">
+            <a href="../empty-cart/index.html">
+              <img src="../images/cart.png" alt="Selected products">
+              <span class="cart-count">0</span>
+            </a>
+          </div>
+    
           <button class="sign-out">Sign-Out</button>
-          <a class="user" href="#"><img src="../images/avatar.png" alt="Your avatar" /><span>User</span></a>
+          <a class="user" href="#"><img src="../images/avatar.png" alt="Your avatar" id="avatar"><span>User</span>
+            <input type="file" id="avatarInput" style="display: none;">
+          </a>
         </div>
       </nav>
-    </header>
+    </header>    
 
     <main>
       <div class="main-wrapper">

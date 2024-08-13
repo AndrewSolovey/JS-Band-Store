@@ -332,8 +332,61 @@ const books = [
 		"description": "If you know how to use JavaScript in the browser, you already have the skills you need to put JavaScript to work on back-end servers with Node. This hands-on book shows you how to use this popular JavaScript platform to create simple server applications, communicate with the client, build dynamic pages, work with data, and tackle other tasks. Although Node has a complete library of developer-contributed modules to automate server-side development, this book will show you how to program with Node on your own, so you truly understand the platform. Discover firsthand how well Node works as a web server, and how easy it is to learn and use."
 	}
 ]
-	
+
 document.addEventListener('DOMContentLoaded', function() {
+    const cartIcon = document.querySelector('.cart-container');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', function() {
+            window.location.href = '../empty-cart/index.html';  // Додано перенаправлення на пустий кошик
+        });
+    }
+
+    const signOutButton = document.querySelector('.sign-out');
+    if (signOutButton) {
+        signOutButton.addEventListener('click', function() {
+            // Видалення даних аутентифікації, якщо використовуються токени або куки
+            // localStorage.removeItem('authToken');
+            // document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            
+            // Перенаправлення на сторінку авторизації
+            window.location.href = '../signin/index.html';
+        });
+    }
+
+    // Отримати ім'я користувача з localStorage і встановити його в елементі .user
+    const username = localStorage.getItem('username');
+    if (username) {
+        const userElement = document.querySelector('.user span');
+        if (userElement) {
+            userElement.textContent = username;
+        }
+    }
+
+    // Отримати фото користувача з localStorage і встановити його в елементі avatar
+    const avatar = document.getElementById('avatar');
+    const savedAvatar = localStorage.getItem('avatar');
+    if (savedAvatar) {
+        avatar.src = savedAvatar;
+    }
+
+    const avatarInput = document.getElementById('avatarInput');
+    avatar.addEventListener('click', function() {
+        avatarInput.click();
+    });
+
+    avatarInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataURL = e.target.result;
+                avatar.src = dataURL;
+                localStorage.setItem('avatar', dataURL);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
     renderBooks(books);
 
     document.getElementById('search').addEventListener('input', (event) => {
@@ -349,57 +402,62 @@ document.addEventListener('DOMContentLoaded', function() {
         const filteredBooks = filterBooks(searchValue, priceFilterValue);
         renderBooks(filteredBooks);
     });
+
+    function renderBooks(filteredBooks) {
+        const listElement = document.getElementById('list');
+        listElement.innerHTML = '';
+
+        if (filteredBooks.length === 0) {
+            listElement.innerHTML = '<p class="no-books-message">No books found matching your criteria</p>';
+            return;
+        }
+
+        filteredBooks.forEach(book => {
+            const listItem = document.createElement('li');
+            listItem.className = 'item';
+
+            const bookImage = book.image ? book.image : "../images/imageNotFound.png";
+
+            listItem.innerHTML = `
+                <a class="item_img_block" href="../specific-book/index.html?id=${book.id}">
+                    <div class="item_img" style="background-image:url(${bookImage})"></div>
+                </a>
+                <p class="item_name">${book.title}</p>
+                <p class="item_author">${book.author}</p>
+                <span class="item_price">${book.price}</span>
+                <a class="item_link" href="../specific-book/index.html?id=${book.id}">View</a>
+            `;
+
+            listElement.appendChild(listItem);
+        });
+    }
+
+    function filterBooksByName(name) {
+        return books.filter(book => book.title.toLowerCase().includes(name.toLowerCase()));
+    }
+
+    function filterBooksByPrice(priceRange) {
+        if (priceRange === 'all') {
+            return books;
+        } else if (priceRange === '15') {
+            return books.filter(book => book.price <= 15);
+        } else if (priceRange === '15-30') {
+            return books.filter(book => book.price > 15 && book.price <= 30);
+        } else if (priceRange === '30') {
+            return books.filter(book => book.price > 30);
+        }
+    }
+
+    function filterBooks(searchValue, priceFilterValue) {
+        const filteredBooksByName = filterBooksByName(searchValue);
+        return filterBooksByPrice(priceFilterValue).filter(book => filteredBooksByName.includes(book));
+    }
 });
 
-function renderBooks(filteredBooks) {
-    const listElement = document.getElementById('list');
-    listElement.innerHTML = '';
 
-    if (filteredBooks.length === 0) {
-        listElement.innerHTML = '<p class="no-books-message">No books found matching your criteria</p>';
-        return;
-    }
 
-    filteredBooks.forEach(book => {
-        const listItem = document.createElement('li');
-        listItem.className = 'item';
 
-        const bookImage = book.image ? book.image : "../images/imageNotFound.png";
 
-        listItem.innerHTML = `
-            <a class="item_img_block" href="../specific-book/index.html?id=${book.id}">
-                <div class="item_img" style="background-image:url(${bookImage})"></div>
-            </a>
-            <p class="item_name">${book.title}</p>
-            <p class="item_author">${book.author}</p>
-            <span class="item_price">${book.price}</span>
-            <a class="item_link" href="../specific-book/index.html?id=${book.id}">View</a>
-        `;
-
-        listElement.appendChild(listItem);
-    });
-}
-
-function filterBooksByName(name) {
-    return books.filter(book => book.title.toLowerCase().includes(name.toLowerCase()));
-}
-
-function filterBooksByPrice(priceRange) {
-    if (priceRange === 'all') {
-        return books;
-    } else if (priceRange === '15') {
-        return books.filter(book => book.price <= 15);
-    } else if (priceRange === '15-30') {
-        return books.filter(book => book.price > 15 && book.price <= 30);
-    } else if (priceRange === '30') {
-        return books.filter(book => book.price > 30);
-    }
-}
-
-function filterBooks(searchValue, priceFilterValue) {
-    const filteredBooksByName = filterBooksByName(searchValue);
-    return filterBooksByPrice(priceFilterValue).filter(book => filteredBooksByName.includes(book));
-}
 
 
 	

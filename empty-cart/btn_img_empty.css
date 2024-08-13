@@ -21,23 +21,23 @@
     color: yellow;
 }
 
-.cart_purchase {
+/* .cart_purchase {
     background-color: yellow;
     color: black;
-}
+} */
 
 .cart_btn:hover {
     background-color: yellow;
     color: black;
 }
 
-.cart_purchase:hover {
+/* .cart_purchase:hover {
     background-color: black;
     color: yellow;
-}
+} */
 
 .cart_btn:hover, .cart_purchase:hover {
-    transition: 0.7s all ease;
+    transition: 1s all ease;
 }
 
 @media screen and (max-width: 1024px) {

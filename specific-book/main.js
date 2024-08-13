@@ -333,7 +333,7 @@ const books =
 			"description": "If you know how to use JavaScript in the browser, you already have the skills you need to put JavaScript to work on back-end servers with Node. This hands-on book shows you how to use this popular JavaScript platform to create simple server applications, communicate with the client, build dynamic pages, work with data, and tackle other tasks. Although Node has a complete library of developer-contributed modules to automate server-side development, this book will show you how to program with Node on your own, so you truly understand the platform. Discover firsthand how well Node works as a web server, and how easy it is to learn and use."
 		}
 	]
-	
+
 	// Функція для оновлення загальної ціни
 function updateTotalPrice(price, quantity = 1) {
     const totalPriceElement = document.getElementById('bookTotalPrice'); // Отримання елемента загальної ціни
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('bookDescription').textContent = book.description;
 
     const bookImageElement = document.getElementById('bookImage'); // Отримання елемента зображення книги
-	const defaultImage = "../images/imageNotFound.png"; // Шлях до зображення not found
+    const defaultImage = "../images/imageNotFound.png"; // Шлях до зображення not found
     if (bookImageElement) {
         bookImageElement.setAttribute('src', book.image || defaultImage); // Встановлення джерела зображення
     }
@@ -417,10 +417,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Оновлення загальної ціни
     updateTotalPrice(book.price);
+
+    // Встановлення ім'я користувача та аватару
+    const username = localStorage.getItem('username');
+    if (username) {
+        const userElement = document.querySelector('.user span');
+        if (userElement) {
+            userElement.textContent = username;
+        }
+    }
+
+    const avatar = document.getElementById('avatar');
+    const savedAvatar = localStorage.getItem('avatar');
+    if (savedAvatar) {
+        avatar.src = savedAvatar;
+    }
+
+    const avatarInput = document.getElementById('avatarInput');
+    avatar.addEventListener('click', function() {
+        avatarInput.click();
+    });
+
+    avatarInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataURL = e.target.result;
+                avatar.src = dataURL;
+                localStorage.setItem('avatar', dataURL);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Вихід з акаунту
+    const signOutButton = document.querySelector('.sign-out');
+    if (signOutButton) {
+        signOutButton.addEventListener('click', function() {
+            // Видалення даних аутентифікації, якщо використовуються токени або куки
+            // localStorage.removeItem('authToken');
+            // document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            
+            // Перенаправлення на сторінку авторизації
+            window.location.href = '../signin/index.html';
+        });
+    }
 });
 
 // Функція для перевірки діапазону значення кількості книг
 function validateBooksCountRange(value) {
     let validValue = Math.max(1, Math.min(42, value)); // Забезпечення значення в межах від 1 до 42
     return parseFloat(validValue.toFixed(2)); // Повернення валідного значення
-}
+};
+
+// Перевірити в localStorage чи існують книги в кошику (перевіряй на null і пустий масив) 
+// При натисканні Add to cart покласти id книги і count (object) в localStorage (JSON.string) і перейти на full-cart 
+
+
+
+
+

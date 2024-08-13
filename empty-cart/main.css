@@ -28,3 +28,22 @@ a {
     font-weight: 600;
 	cursor: pointer;
 }
+
+.cart_purchase {
+    background-color: rgba(255, 255, 0); 
+	opacity: 0.7;
+	color: black;
+    cursor: not-allowed; 
+    pointer-events: none; 
+}
+
+.cart_purchase.enabled {
+    background-color: yellow; 
+    cursor: pointer;
+    pointer-events: auto; 
+}
+
+.cart_purchase.enabled:hover {
+	background-color: black;
+    color: yellow; 
+}

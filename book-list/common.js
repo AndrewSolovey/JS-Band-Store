@@ -1,3 +1,4 @@
+// common.js
 document.addEventListener('DOMContentLoaded', function() {
     const username = localStorage.getItem('username');
     const userElement = document.querySelector('.user span');
@@ -42,5 +43,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-

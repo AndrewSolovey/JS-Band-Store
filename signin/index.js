@@ -1,29 +1,44 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
-    const usernameHint = document.createElement('div');
-    usernameHint.classList.add('username_hint');
-    usernameHint.style.fontSize = '1.4rem'; // Встановіть розмір шрифту одразу
-    usernameInput.parentNode.appendChild(usernameHint);
+    const signInButton = document.querySelector('.cart_purchase');
+    const usernameHint = document.getElementById('usernameHint');
+    const authForm = document.getElementById('authForm');
 
-    usernameInput.addEventListener('input', () => {
-        const value = usernameInput.value;
-        if (value.length < 4 || value.length > 16) {
-            usernameHint.textContent = 'Username must be at least 4 characters and not more than 16.';
+    function updateSignInButton() {
+        const usernameLength = usernameInput.value.length;
+
+        if (usernameLength === 0 || usernameLength < 4 || usernameLength > 16) {
+            signInButton.disabled = true;
+            signInButton.classList.remove('enabled');
+            if (usernameLength > 0 && (usernameLength < 4 || usernameLength > 16)) {
+                usernameHint.textContent = 'Username must be at least 4 characters and not more than 16';
+                usernameHint.style.fontSize = '1.4rem';
+                usernameHint.style.color = "red";
+                usernameHint.style.textAlign = "center";
+            } else {
+                usernameHint.textContent = '';
+            }
         } else {
+            signInButton.disabled = false;
+            signInButton.classList.add('enabled');
             usernameHint.textContent = '';
         }
+    }
+
+    // Зберегти ім'я користувача в localStorage при натисканні кнопки
+    authForm.addEventListener('submit', function(event) {
+        const username = usernameInput.value;
+        localStorage.setItem('username', username);
     });
 
-    document.querySelector('form').addEventListener('submit', (event) => {
-        const value = usernameInput.value;
-        if (value.length === 0 || value.length < 4 || value.length > 16) {
-            event.preventDefault();
-            usernameHint.textContent = 'Username must be at least 4 characters and not more than 16.';
-            // usernameHint.style.fontSize = '14px'; // Встановіть розмір шрифту у разі помилки
-        } else {
-            // Перенаправлення до сторінки списку книг
-            window.location.href = '../book-list/index.html'; // Вкажіть правильний шлях до вашої сторінки
-        }
-    });
+    usernameInput.addEventListener('input', updateSignInButton);
+
+    // Викликати функцію, щоб оновити стан кнопки при завантаженні сторінки
+    updateSignInButton();
 });
+
+
+
+
+
 

@@ -45,26 +45,18 @@ input {
 
 .input_form {
     align-self: center;
-    font-size: 1.4rem; /* Відносний розмір шрифту */
+    font-size: 2rem; 
 }
 
 .username_hint {
     color: red;
     text-align: center;
-    font-size: 1.4rem; /* Відносний розмір шрифту */
-  }
+    font-size: 1.4rem; 
+}
 
 button {
     font-weight: bolder;
     font-size: 1.7rem;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: yellow;
-    border: 2px solid;
-    transition: 1s;
 }
 
 @media screen and (max-width: 800px) {
